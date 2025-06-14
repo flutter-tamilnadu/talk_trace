@@ -1,0 +1,33 @@
+name: talk_trace
+description: "Manage customer interactions from initial call logs to successful lead conversions, streamlining your sales pipeline."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get: ^4.6.5
+  get_storage: ^2.1.1
+  dio: ^5.3.2
+  cached_network_image: ^3.3.0
+  intl: ^0.18.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  get_cli: ^1.7.1
+  flutter_lints: ^5.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
