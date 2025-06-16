@@ -3,7 +3,12 @@ import 'package:get/get.dart';
 import '../controllers/dashboard_controller.dart';
 import 'dashboard_call_logs_widget.dart';
 
-class DashboardView extends GetView<DashboardController> {
+
+
+
+class DashboardView extends StatelessWidget {
+
+  DashboardController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

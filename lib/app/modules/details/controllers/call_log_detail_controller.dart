@@ -138,4 +138,5 @@ class CallLogDetailController extends GetxController {
         return Colors.grey;
     }
   }
+
 }

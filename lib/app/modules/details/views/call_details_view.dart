@@ -13,52 +13,40 @@ class CallDetailsView extends GetView<CallLogDetailController> {
     final number = args['number'];
 
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 56,left: 20),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(Icons.arrow_back),
-                SizedBox(width: 20),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      name,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16, // optional
-                      ),
-                    ),
-                    Text(number,style: TextStyle(fontSize: 12),),
-                  ],
-                ),
-              ]
+      appBar: AppBar(
+        centerTitle: false,
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              name??"",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16, // optional
+              ),
             ),
-          ),
-          Expanded(
-            child: Obx(() {
-              if (controller.isLoading.value) {
-                return Center(child: CircularProgressIndicator());
-              }
-              if (controller.filteredLogs.isEmpty) {
-                return Center(child: Text('No call logs found'));
-              }
-
-              return ListView.builder(
-                shrinkWrap: true,
-                itemCount: controller.filteredLogs.length,
-                itemBuilder: (context, index) {
-                  final log = controller.filteredLogs[index];
-                  return CallLogItemWidget(log: log);
-                },
-              );
-            }),
-          ),
-        ],
+            Text(number, style: TextStyle(fontSize: 12)),
+          ],
+        ),
       ),
+      body: Obx(() {
+        if (controller.isLoading.value) {
+          return Center(child: CircularProgressIndicator());
+        }
+        if (controller.filteredLogs.isEmpty) {
+          return Center(child: Text('No call logs found'));
+        }
+
+        return ListView.builder(
+          shrinkWrap: true,
+          padding: EdgeInsets.zero,
+          itemCount: controller.filteredLogs.length,
+          itemBuilder: (context, index) {
+            final log = controller.filteredLogs[index];
+            return CallLogItemWidget(log: log);
+          },
+        );
+      }),
     );
   }
 }
