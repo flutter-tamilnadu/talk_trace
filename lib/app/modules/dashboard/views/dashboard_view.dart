@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/dashboard_controller.dart';
+import 'dashboard_call_logs_widget.dart';
 
 class DashboardView extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Dashboard'),
-        centerTitle: true,
-      ),
       body: Obx(() => IndexedStack(
         index: controller.currentIndex.value,
         children: [
-          Center(child: Text('Home Page')),
+          Center(child: CallLogsWidget()),
           Center(child: Text('Analytics Page')),
           Center(child: Text('Profile Page')),
         ],
